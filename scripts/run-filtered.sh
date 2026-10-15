@@ -38,7 +38,9 @@ if [ "${total:-0}" -le "$max_full" ]; then
 else
   echo "[lean-tokens] $total lines of output, trimmed to failures and the summary. Full log: $log"
   pattern='(fail|failed|failing|failure|error|exception|traceback|panic|assert|✗|✕|✘|×)'
-  matches="$(strip_ansi <"$log" | grep -n -i -E -A 6 "$pattern" | head -n 120)"
+  # Context lines that are just per-test passes add nothing, so drop them.
+  matches="$(strip_ansi <"$log" | grep -n -i -E -A 6 "$pattern" \
+    | grep -v -E '^[0-9]+-[[:space:]]*(✓|✔|√)[[:space:]]' | head -n 120)"
   if [ -n "$matches" ]; then
     echo "--- matching lines (numbers are line numbers in the full log) ---"
     printf '%s\n' "$matches"

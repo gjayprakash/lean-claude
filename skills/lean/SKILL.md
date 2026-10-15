@@ -1,6 +1,6 @@
 ---
 name: lean
-description: Token-lean way of working in Claude Code. Use when the user asks to save tokens, cut usage or cost, is near a usage limit, says the session is getting long or slow, or before exploring a large codebase.
+description: Token-lean way of working in Claude Code. Use proactively whenever the user mentions saving tokens, usage limits, cost, or a long or slow session, and before exploring a large codebase.
 argument-hint: "[optional: what you're about to work on]"
 ---
 
@@ -24,7 +24,7 @@ Work so that each request carries as little context as possible, without getting
 ## Running commands
 
 - Prefer quiet or summary output: `-q`, `--silent`, `--reporter=dot`, `--quiet`, `git status -s`, `git log --oneline -n 20`, `git diff --stat` before a full diff.
-- Bound long output: `| tail -n 40`, `| head -n 40`, `| grep -E "FAIL|Error"`. Run one failing test instead of the suite while iterating.
+- Bound long output: `| tail -n 40`, `| head -n 40`, `| grep -E "FAIL|Error"`. Run one failing test instead of the suite while iterating. Exception: when lean-tokens output trimming is on, run test, build and lint commands plainly, with no pipes or redirects. Trimming only applies to plain commands.
 - Hand long test runs, log digging and docs lookups to a subagent and keep its summary.
 - If lean-tokens output trimming is on, a trimmed run prints where the full log is. Grep that log instead of rerunning the command.
 

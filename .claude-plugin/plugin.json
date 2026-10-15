@@ -1,7 +1,7 @@
 {
   "name": "lean-tokens",
   "displayName": "Lean Tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Spend fewer tokens in Claude Code: lean working habits at session start, a setup audit, a handoff command for cheap fresh starts, and optional trimming of noisy test/build output.",
   "author": {
     "name": "gjayprakash",

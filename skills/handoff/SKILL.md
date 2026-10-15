@@ -2,14 +2,14 @@
 name: handoff
 description: Write a compact handoff note for the current task so the user can /clear and pick up later in a fresh, small context instead of carrying the whole conversation.
 disable-model-invocation: true
-argument-hint: "[optional file path, default .claude/handoff.md]"
+argument-hint: "[optional file path, default .lean-tokens/handoff.md]"
 ---
 
 # Handoff
 
 Write a handoff note so that a fresh session can continue this work without the current conversation.
 
-Target file: `$ARGUMENTS` if given, otherwise `.claude/handoff.md` in the project root. Overwrite any previous handoff.
+Target file: `$ARGUMENTS` if given, otherwise `.lean-tokens/handoff.md` in the project root. Write it directly with the Write tool, which creates the folder; no `mkdir` needed. Don't write it under `.claude/`, because Claude Code asks for permission on every write there. Overwrite any previous handoff.
 
 Write from what you already know in this conversation. Don't re-read files or rerun commands to gather it. Keep it under 40 lines, with no prose padding:
 
@@ -39,5 +39,5 @@ Write from what you already know in this conversation. Don't re-read files or re
 
 Then tell the user in two lines:
 
-1. The note is saved at `<path>`. Suggest adding it to `.gitignore` if it shouldn't be committed.
+1. The note is saved at `<path>`. Suggest adding `.lean-tokens/` to `.gitignore` if it isn't there already.
 2. To continue: run `/clear`, then start with `@<path> continue from the next step`.

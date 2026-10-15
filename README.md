@@ -34,7 +34,7 @@ Start a new session and the session-start rules are active.
 
 ```
 /lean-tokens:audit            # find what's costing you tokens, get ranked fixes
-/lean-tokens:handoff          # save state, then /clear and continue with @.claude/handoff.md
+/lean-tokens:handoff          # save state, then /clear and continue with @.lean-tokens/handoff.md
 /lean-tokens:lean [task]      # switch Claude into lean mode for a task
 ```
 
@@ -64,7 +64,10 @@ Safety rules:
 - Only simple commands are touched: one known runner, optional `cd <dir> &&` and `VAR=value` prefixes, and ordinary arguments. Anything with pipes, redirects, `;`, `$`, backticks, subshells or newlines is left alone, and so are watch modes, dev servers and package installs.
 - **Matching commands run without a permission prompt while this option is on.** Your deny and ask rules still apply. Leave the option off if you want to approve every test run yourself.
 - It needs `jq`, `python3` or `node` to parse the hook input. If none of them is installed, it does nothing.
+- While this option is on, the session-start rules tell Claude to run these commands plainly (no `| tail`), because piped commands are left untouched.
 - `LEAN_TOKENS_MAX_LINES` and `LEAN_TOKENS_TAIL_LINES` change the thresholds.
+
+In a headless test, a failing 600-test run (610 lines of output) reached Claude as 25 lines: the failure with its stack line, the summary and the exit code.
 
 ## Habits that save the most
 
