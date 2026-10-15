@@ -1,0 +1,17 @@
+{
+  "name": "lean-tokens",
+  "description": "Token-saving tools for Claude Code.",
+  "owner": {
+    "name": "gjayprakash",
+    "url": "https://github.com/gjayprakash"
+  },
+  "plugins": [
+    {
+      "name": "lean-tokens",
+      "source": "./",
+      "description": "Spend fewer tokens in Claude Code: lean working habits, a setup audit, cheap handoffs between sessions, and optional trimming of noisy test/build output.",
+      "category": "productivity",
+      "tags": ["tokens", "usage", "cost", "context"]
+    }
+  ]
+}

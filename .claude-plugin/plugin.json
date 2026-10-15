@@ -1,0 +1,28 @@
+{
+  "name": "lean-tokens",
+  "displayName": "Lean Tokens",
+  "version": "0.1.0",
+  "description": "Spend fewer tokens in Claude Code: lean working habits at session start, a setup audit, a handoff command for cheap fresh starts, and optional trimming of noisy test/build output.",
+  "author": {
+    "name": "gjayprakash",
+    "url": "https://github.com/gjayprakash"
+  },
+  "homepage": "https://github.com/gjayprakash/lean-claude",
+  "repository": "https://github.com/gjayprakash/lean-claude",
+  "license": "MIT",
+  "keywords": ["tokens", "usage", "cost", "context", "efficiency", "productivity"],
+  "userConfig": {
+    "session_rules": {
+      "type": "boolean",
+      "title": "Lean rules at session start",
+      "description": "Adds a short (~200 token) checklist of token-saving habits to Claude's context at the start of each session, after /clear and after compaction.",
+      "default": true
+    },
+    "filter_noisy_output": {
+      "type": "boolean",
+      "title": "Trim test, build and lint output",
+      "description": "Rewrites plain test/build/lint/typecheck commands (npm test, pytest, go test, tsc, eslint...) so Claude sees only failures and a summary; the full log is kept in a temp file. Matching commands run without a permission prompt while this is on. Deny and ask rules still apply.",
+      "default": false
+    }
+  }
+}
